@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { increment, decrement, reset } from 'src/app/counter.actions';
+import { nameIsFoo, nameIsBar } from 'src/app/name.actions';
 
 @Component({
   selector: 'app-my-counter',
@@ -10,11 +11,13 @@ import { increment, decrement, reset } from 'src/app/counter.actions';
 })
 export class MyCounterComponent implements OnInit {
   count$: Observable<number>;
+  name$: Observable<string>;
 
   constructor(
-    private store: Store<{ count: number }>
+    private store: Store<{ count: number, name: string }>
   ) {
     this.count$ = store.pipe(select('count'));
+    this.name$ = store.pipe(select('name'));
   }
 
   ngOnInit() {
@@ -30,5 +33,13 @@ export class MyCounterComponent implements OnInit {
 
   reset() {
     this.store.dispatch(reset());
+  }
+
+  setFoo() {
+    this.store.dispatch(nameIsFoo());
+  }
+
+  setBar() {
+    this.store.dispatch(nameIsBar());
   }
 }

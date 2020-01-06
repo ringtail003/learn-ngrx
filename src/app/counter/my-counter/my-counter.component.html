@@ -5,3 +5,10 @@
 <button id="decrement" (click)="decrement()">Decrement</button>
 
 <button id="reset" (click)="reset()">Reset</button>
+
+<hr>
+
+<div>Name: {{name$ | async}}</div>
+
+<button (click)="setFoo()">foo</button>
+<button (click)="setBar()">bar</button>

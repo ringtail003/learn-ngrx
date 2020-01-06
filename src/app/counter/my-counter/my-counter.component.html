@@ -4,7 +4,7 @@
 
 <button id="decrement" (click)="decrement()">Decrement</button>
 
-<button id="reset" (click)="reset()">Reset</button>
+<button id="reset" (click)="reset()" [disabled]="(name$ | async) === 'foo'">Reset</button>
 
 <hr>
 

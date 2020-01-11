@@ -7,8 +7,7 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
-
-import { MoviesPageComponent } from 'src/app/components/movies-page.component';
+import { MoviesPageComponent } from './movies/movies-page/movies-page.component';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import * as MovieAction from '../state/movies/action';
-import { State } from '../state/movies/model';
-import * as TodoSelectors from '../state/movies/selector';
+import * as MovieAction from '../../state/movies/action';
+import { State } from '../../state/movies/model';
+import * as TodoSelectors from '../../state/movies/selector';
 import { tap, map } from 'rxjs/operators';
 import * as Rx from 'rxjs';
 

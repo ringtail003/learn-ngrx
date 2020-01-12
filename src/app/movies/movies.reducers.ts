@@ -1,8 +1,8 @@
 import { createReducer, on, Action } from "@ngrx/store";
 import * as MovieActions from './movie.actions';
-import { Movie } from './movie.model';
+import { MovieState } from './state';
 
-const initialState = {
+const initialState: MovieState = {
   payload: [],
 };
 
@@ -13,6 +13,6 @@ const _moviesReducer = createReducer(initialState,
   ),
 );
 
-export function moviesReducer(state: { payload: Movie[] }, action: Action) {
+export function moviesReducer(state: MovieState, action: Action) {
   return _moviesReducer(state, action);
 }

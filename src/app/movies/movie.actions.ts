@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Movie } from './movie.model';
+import { MovieState } from './state';
 
 export const load = createAction(
   '[Movie API] Load movies',
@@ -7,7 +8,7 @@ export const load = createAction(
 
 export const loadedWithSuccess = createAction(
   '[Movie API] Load movies successed',
-  props<{ payload: Movie[] }>(),
+  props<MovieState>(),
 );
 
 export const loadedWithFailure = createAction(

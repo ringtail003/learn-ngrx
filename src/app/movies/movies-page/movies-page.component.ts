@@ -3,6 +3,7 @@ import { Movie } from '../movie.model';
 import * as Rx from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as MovieAction from '../movie.actions';
+import { MovieState } from '../state';
 
 @Component({
   selector: 'app-movies-page',
@@ -13,7 +14,7 @@ export class MoviesPageComponent implements OnInit {
   movies$: Rx.Observable<Movie[]> = this.store.select((state) => state.movies.payload);
 
   constructor(
-    private store: Store<{ movies: { payload: Movie[] } }>,
+    private store: Store<{ movies: MovieState }>,
   ) { }
 
   ngOnInit() {

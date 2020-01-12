@@ -19,6 +19,10 @@ export class MoviesPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
     this.movies$ = this.repository.get();
   }
 

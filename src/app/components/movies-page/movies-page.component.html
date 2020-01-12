@@ -1,3 +1,5 @@
 <li *ngFor="let movie of movies$ | async">
   {{movie.title}}
 </li>
+
+<button (click)="refresh()">refresh</button>

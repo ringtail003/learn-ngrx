@@ -16,10 +16,9 @@ export class MoviesService {
   get(): Rx.Observable<Movie[]|string> {
     return this.httpClient.get<Movie[]>('/hoge/fuga').pipe(
       catchError((error: HttpErrorResponse) => {
-        throw new Error(error.statusText);
+        throw new Error(`${error.status} ${error.statusText}`);
       }),
     );
-
 
     // return Rx.of([
     //   { title: 'a' },

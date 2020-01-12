@@ -7,7 +7,7 @@ export const load = createAction(
 
 export const loadedWithSuccess = createAction(
   '[Movie API] Load movies successed',
-  props<{ movies: Movie[] }>(),
+  props<{ payload: Movie[] }>(),
 );
 
 export const loadedWithFailure = createAction(

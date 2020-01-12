@@ -10,10 +10,10 @@ import * as MovieAction from '../movie.actions';
   styleUrls: ['./movies-page.component.scss']
 })
 export class MoviesPageComponent implements OnInit {
-  movies$: Rx.Observable<Movie[]> = this.store.select((state) => { console.info(state); return state.movies; });
+  movies$: Rx.Observable<Movie[]> = this.store.select((state) => state.movies.payload);
 
   constructor(
-    private store: Store<{ movies: Movie[] }>,
+    private store: Store<{ movies: { payload: Movie[] } }>,
   ) { }
 
   ngOnInit() {

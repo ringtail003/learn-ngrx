@@ -3,16 +3,16 @@ import * as MovieActions from './movie.actions';
 import { Movie } from './movie.model';
 
 const initialState = {
-  movies: [],
+  payload: [],
 };
 
 const _moviesReducer = createReducer(initialState,
   on(
     MovieActions.loadedWithSuccess,
-    (state, { movies }) => ({ movies })
+    (state, { payload }) => ({ payload })
   ),
 );
 
-export function moviesReducer(state: { movies: Movie[] }, action: Action) {
+export function moviesReducer(state: { payload: Movie[] }, action: Action) {
   return _moviesReducer(state, action);
 }

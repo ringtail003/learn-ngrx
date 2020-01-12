@@ -17,7 +17,7 @@ export class MovieEffects {
       ofType(MovieAction.load),
       switchMap(() =>
         this.movieService.get().pipe(
-          map((movies) => MovieAction.loadedWithSuccess({ movies })),
+          map((movies) => MovieAction.loadedWithSuccess({ payload: movies })),
           catchError((error) => Rx.of(MovieAction.loadedWithFailure({ error }))),
         )
       )

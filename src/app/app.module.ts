@@ -8,11 +8,11 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 
-import { MoviesPageComponent } from 'src/app/movies/movies-page/movies-page.component';
+import { MoviesPageComponent } from 'src/app/components/movies-page.component';
 import { EffectsModule } from '@ngrx/effects';
-import { MovieEffects } from './movies/movie.effects';
-import { moviesReducer } from './movies/movies.reducers';
 import { HttpClientModule } from '@angular/common/http';
+
+import * as MovieState from './state/movies';
 
 @NgModule({
   declarations: [
@@ -24,9 +24,11 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot({
-      movies: moviesReducer,
+      movies: MovieState.reducer,
     }),
-    EffectsModule.forRoot([MovieEffects]),
+    EffectsModule.forRoot([
+      MovieState.Effects,
+    ]),
     StoreDevtoolsModule.instrument({
       maxAge: 5,
       logOnly: environment.production,

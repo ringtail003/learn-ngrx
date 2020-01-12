@@ -12,6 +12,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 
 import { MoviesPageComponent } from 'src/app/movies/movies-page/movies-page.component';
+import { EffectsModule } from '@ngrx/effects';
+import { MovieEffects } from './movies/movie.effects';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { MoviesPageComponent } from 'src/app/movies/movies-page/movies-page.comp
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({ count: countReducer, name: nameReducer }),
+    EffectsModule.forRoot([MovieEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 5,
       logOnly: environment.production,

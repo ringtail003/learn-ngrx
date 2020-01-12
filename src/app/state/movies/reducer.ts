@@ -1,5 +1,5 @@
 import { createReducer, on, Action } from "@ngrx/store";
-import * as Actions from './action';
+import * as StoreAction from './action';
 import { State } from './model';
 
 const initialState: State = {
@@ -8,11 +8,11 @@ const initialState: State = {
 
 const _reducer = createReducer(initialState,
   on(
-    Actions.loadedWithSuccess,
+    StoreAction.loadedWithSuccess,
     (state, { payload }) => ({ payload })
   ),
   on(
-    Actions.loadedWithFailure,
+    StoreAction.loadedWithFailure,
     (state, { payload, error }) => ({ payload, error })
   ),
 );

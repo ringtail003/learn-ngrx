@@ -1,7 +1,7 @@
 import { Store, select } from '@ngrx/store';
 import { State, Movie } from './model';
-import * as Actions from './action';
-import * as Selectors from './selector';
+import * as Action from './action';
+import * as Selector from './selector';
 import { tap, map } from 'rxjs/operators';
 import * as Rx from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 })
 export class Facade {
   private movies$ = this.store.pipe(
-    select(Selectors.get),
+    select(Selector.get),
     tap((state) => {
       if (state.error) {
         console.warn(`[state.error]: ${state.error}`);
@@ -26,7 +26,7 @@ export class Facade {
   ) {}
 
   get(): Rx.Observable<Movie[]> {
-    this.store.dispatch(Actions.load());
+    this.store.dispatch(Action.load());
 
     return this.movies$;
   }

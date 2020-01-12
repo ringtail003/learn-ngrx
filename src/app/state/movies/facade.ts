@@ -1,14 +1,16 @@
-import { Injectable } from "@angular/core";
 import { Store, select } from '@ngrx/store';
-import { State } from './model';
+import { State, Movie } from './model';
 import * as Actions from './action';
 import * as Selectors from './selector';
 import { tap, map } from 'rxjs/operators';
 import * as Rx from 'rxjs';
+import { Injectable } from '@angular/core';
 
-@Injectable()
-export class TodoFacade {
-  movies$ = this.store.pipe(
+@Injectable({
+  providedIn: 'root'
+})
+export class Facade {
+  private movies$ = this.store.pipe(
     select(Selectors.get),
     tap((state) => {
       if (state.error) {
@@ -23,7 +25,9 @@ export class TodoFacade {
     private store: Store<State>,
   ) {}
 
-  get() {
+  get(): Rx.Observable<Movie[]> {
     this.store.dispatch(Actions.load());
+
+    return this.movies$;
   }
 }

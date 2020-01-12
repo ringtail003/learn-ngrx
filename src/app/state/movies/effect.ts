@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { MoviesService } from '../../services/movies.service';
+import { MoviesRepositoryService } from '../../services/movies-repository.service';
 import * as Action from './action';
 import { switchMap, catchError, map } from 'rxjs/operators';
 import * as Rx from 'rxjs';
@@ -10,7 +10,7 @@ import { Movie } from './model';
 export class Effects {
   constructor(
     private actions$: Actions,
-    private movieService: MoviesService,
+    private movieService: MoviesRepositoryService,
   ) {}
 
   loadAll$ = createEffect(() =>

@@ -7,13 +7,13 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class MoviesService {
+export class MoviesRepositoryService {
 
   constructor(
     private httpClient: HttpClient,
   ) { }
 
-  get(): Rx.Observable<Movie[]|string> {
+  get(): Rx.Observable<Movie[]> {
     // return this.httpClient.get<Movie[]>('/hoge/fuga').pipe(
     //   catchError((error: HttpErrorResponse) => {
     //     throw new Error(`${error.status} ${error.statusText}`);

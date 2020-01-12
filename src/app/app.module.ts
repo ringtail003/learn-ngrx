@@ -11,10 +11,13 @@ import { nameReducer } from './name.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 
+import { MoviesPageComponent } from 'src/app/movies/movies-page/movies-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    MyCounterComponent
+    MyCounterComponent,
+    MoviesPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,10 @@ const _moviesReducer = createReducer(initialState,
     MovieActions.loadedWithSuccess,
     (state, { payload }) => ({ payload })
   ),
+  on(
+    MovieActions.loadedWithFailure,
+    (state, { payload, error }) => ({ payload, error })
+  ),
 );
 
 export function moviesReducer(state: MovieState, action: Action) {

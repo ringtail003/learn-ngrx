@@ -1,21 +1,31 @@
 import { Injectable } from '@angular/core';
 import * as Rx from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { delay, catchError } from 'rxjs/operators';
 import { Movie } from './movie.model';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
 
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient,
+  ) { }
 
-  get(): Rx.Observable<Movie[]> {
-    return Rx.of([
-      { title: 'a' },
-      { title: 'b' },
-    ]).pipe(
-      delay(2000),
+  get(): Rx.Observable<Movie[]|string> {
+    return this.httpClient.get<Movie[]>('/hoge/fuga').pipe(
+      catchError((error: HttpErrorResponse) => {
+        throw new Error(error.statusText);
+      }),
     );
+
+
+    // return Rx.of([
+    //   { title: 'a' },
+    //   { title: 'b' },
+    // ]).pipe(
+    //   delay(2000),
+    // );
   }
 }

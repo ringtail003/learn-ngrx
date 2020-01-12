@@ -4,6 +4,7 @@ import { MoviesService } from './movies.service';
 import * as MovieAction from './movie.actions';
 import { switchMap, catchError, map } from 'rxjs/operators';
 import * as Rx from 'rxjs';
+import { Movie } from './movie.model';
 
 @Injectable()
 export class MovieEffects {
@@ -17,8 +18,8 @@ export class MovieEffects {
       ofType(MovieAction.load),
       switchMap(() =>
         this.movieService.get().pipe(
-          map((movies) => MovieAction.loadedWithSuccess({ payload: movies })),
-          catchError((error) => Rx.of(MovieAction.loadedWithFailure({ error }))),
+          map((movies: Movie[]) => MovieAction.loadedWithSuccess({ payload: movies })),
+          catchError((error: string) => Rx.of(MovieAction.loadedWithFailure({ payload: [], error }))),
         )
       )
     )

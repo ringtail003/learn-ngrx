@@ -15,6 +15,7 @@ import { MoviesPageComponent } from 'src/app/movies/movies-page/movies-page.comp
 import { EffectsModule } from '@ngrx/effects';
 import { MovieEffects } from './movies/movie.effects';
 import { moviesReducer } from './movies/movies.reducers';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { moviesReducer } from './movies/movies.reducers';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     StoreModule.forRoot({
       count: countReducer,
       name: nameReducer,

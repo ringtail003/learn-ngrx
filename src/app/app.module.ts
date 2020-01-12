@@ -7,16 +7,17 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
-import { MoviesPageComponent } from './components/movies-page/movies-page.component';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 
 import * as MovieState from './state/movies';
+import { PageAModule } from './pages/page-a/module';
+import { PageBModule } from './pages/page-b/module';
+import { ComponentsModule } from './components/module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MoviesPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +33,9 @@ import * as MovieState from './state/movies';
       maxAge: 5,
       logOnly: environment.production,
     }),
+    PageAModule,
+    PageBModule,
+    ComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

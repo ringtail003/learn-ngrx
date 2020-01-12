@@ -5,9 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { StoreModule } from '@ngrx/store';
-import { countReducer } from './counter.reducer';
-import { MyCounterComponent } from './counter/my-counter/my-counter.component';
-import { nameReducer } from './name.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 
@@ -20,7 +17,6 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    MyCounterComponent,
     MoviesPageComponent,
   ],
   imports: [
@@ -28,8 +24,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot({
-      count: countReducer,
-      name: nameReducer,
       movies: moviesReducer,
     }),
     EffectsModule.forRoot([MovieEffects]),

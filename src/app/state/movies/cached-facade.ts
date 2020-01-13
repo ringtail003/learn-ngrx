@@ -8,7 +8,7 @@ import * as Selector from './selector';
 @Injectable({
   providedIn: 'root'
 })
-export class CachedFacade {
+export class CachedFacade implements Omit<Facade, 'movies$'> {
   private cache: Movie[] = [];
 
   constructor(

@@ -27,4 +27,8 @@ export class CachedFacade implements Omit<Facade, 'movies$'> {
 
     return this.facade.get();
   }
+
+  post() {
+    return this.facade.post();
+  }
 }

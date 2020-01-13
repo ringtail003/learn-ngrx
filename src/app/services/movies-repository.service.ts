@@ -29,4 +29,16 @@ export class MoviesRepositoryService {
       delay(2000),
     );
   }
+
+  post(): Rx.Observable<void | any[]> {
+    // return this.httpClient.post('/hoge/fuga', {}).pipe(
+    //   catchError((error: HttpErrorResponse) => {
+    //     throw new Error(`${error.status} ${error.statusText}`);
+    //   }),
+    // );
+
+    return Rx.of([]).pipe(
+      delay(2000),
+    );
+  }
 }

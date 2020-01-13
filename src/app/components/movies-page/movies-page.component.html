@@ -2,4 +2,7 @@
   {{movie.title}}
 </li>
 
-<button (click)="refresh()">refresh</button>
+<button
+  (click)="add()"
+  [disabled]="pending"
+>add</button>

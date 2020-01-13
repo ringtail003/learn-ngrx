@@ -15,6 +15,13 @@ const _reducer = createReducer(initialState,
     StoreAction.loadedWithFailure,
     (state, { payload, error }) => ({ payload, error })
   ),
+  on(
+    StoreAction.postWithSuccess,
+  ),
+  on(
+    StoreAction.postWithFailure,
+    (state, { error }) => ({ ...state, error })
+  ),
 );
 
 export function reducer(state: State, action: Action) {

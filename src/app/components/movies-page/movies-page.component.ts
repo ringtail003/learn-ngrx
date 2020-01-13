@@ -8,7 +8,7 @@ import { MoviesRepositoryService } from 'src/app/services/movies-repository.serv
   templateUrl: './movies-page.component.html',
   styleUrls: ['./movies-page.component.scss'],
   providers: [
-    { provide: MoviesRepositoryService, useClass: MoviesState.Facade },
+    { provide: MoviesRepositoryService, useClass: MoviesState.CachedFacade },
   ],
 })
 export class MoviesPageComponent implements OnInit {

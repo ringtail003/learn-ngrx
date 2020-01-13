@@ -21,21 +21,12 @@ export class Facade {
     map((state) => state.payload),
   );
 
-  private cache: Movie[] = [];
-
   constructor(
     private store: Store<State>,
   ) {}
 
   get(): Rx.Observable<Movie[]> {
-    this.store.select(Selector.get).subscribe((state) => {
-      this.cache = state.payload;
-    });
-
-    if (!this.cache.length) {
-      console.info('dispatch load');
-      this.store.dispatch(Action.load());
-    }
+    this.store.dispatch(Action.load());
 
     return this.movies$;
   }

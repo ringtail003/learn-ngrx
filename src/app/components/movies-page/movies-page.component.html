@@ -5,4 +5,4 @@
 <button
   (click)="add()"
   [disabled]="pending"
->add</button>
+>{{pending ? 'pending...' : 'add'}}</button>

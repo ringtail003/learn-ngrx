@@ -8,6 +8,10 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class MoviesRepositoryService {
+  private movies: Movie[] = [
+    { title: 'a' },
+    { title: 'b' },
+  ];
 
   constructor(
     private httpClient: HttpClient,
@@ -22,22 +26,21 @@ export class MoviesRepositoryService {
     //   }),
     // );
 
-    return Rx.of([
-      { title: 'a' },
-      { title: 'b' },
-    ]).pipe(
+    return Rx.of(this.movies).pipe(
       delay(2000),
     );
   }
 
-  post(): Rx.Observable<void | any[]> {
+  post(movie: Movie): Rx.Observable<void | any[]> {
     // return this.httpClient.post('/hoge/fuga', {}).pipe(
     //   catchError((error: HttpErrorResponse) => {
     //     throw new Error(`${error.status} ${error.statusText}`);
     //   }),
     // );
 
-    return Rx.of([]).pipe(
+    this.movies.push(movie);
+
+    return Rx.of(null).pipe(
       delay(2000),
     );
   }

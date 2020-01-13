@@ -29,20 +29,21 @@ export class Facade implements Omit<MoviesRepositoryService, 'constructor'> {
     private effect: Effects,
   ) {}
 
-  get(): Rx.Observable<Movie[]> {
+  get() {
     this.store.dispatch(Action.load());
 
     return this.movies$;
   }
 
-  post(): Rx.Observable<void | any[]> {
-    this.store.dispatch(Action.post());
+  post(movie: Movie) {
+    this.store.dispatch(Action.post({ payload: movie }));
 
     return this.effect.actions$.pipe(
       ofType(
         Action.postWithSuccess,
         Action.postWithFailure,
       ),
+      tap(() => this.store.dispatch(Action.load())),
       map(() => null),
     );
   }

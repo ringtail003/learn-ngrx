@@ -20,7 +20,7 @@ export class CachedFacade implements Omit<Facade, 'movies$'> {
     });
   }
 
-  get(): Rx.Observable<Movie[]> {
+  get() {
     if (this.cache.length) {
       return Rx.of(this.cache);
     }
@@ -28,7 +28,7 @@ export class CachedFacade implements Omit<Facade, 'movies$'> {
     return this.facade.get();
   }
 
-  post() {
-    return this.facade.post();
+  post(movie: Movie) {
+    return this.facade.post(movie);
   }
 }

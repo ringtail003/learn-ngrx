@@ -27,7 +27,7 @@ export class MoviesPageComponent implements OnInit {
   add() {
     this.pending = true;
 
-    this.repository.post().subscribe(() => {
+    this.repository.post({ title: 'foobar' }).subscribe(() => {
       this.pending = false;
     });
   }

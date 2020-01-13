@@ -28,12 +28,12 @@ export class Effects {
   post$ = createEffect(() =>
     this.actions$.pipe(
       ofType(Action.post),
-      switchMap(() =>
-        this.repository.post().pipe(
+      switchMap(({ payload }) => {
+        return this.repository.post(payload).pipe(
           map(() => Action.postWithSuccess()),
-          tap(() => console.info('effect')),
           catchError((error: string) => Rx.of(Action.postWithFailure({ error })))
-        ),
+        );
+      }
       ),
     ),
   );
